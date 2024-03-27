@@ -1,0 +1,34 @@
+{
+    "name": "grass-feria/laravel-serp-api",
+    "description": "SerpApi package for laravel",
+    "homepage":"https://google.com",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "David Grass Feria",
+        "email": "david@grass-feria.de"
+      }
+    ],
+   
+    "autoload": {
+      
+      "psr-4": {
+        "GrassFeria\\LaravelSerpApi\\": "src"
+      
+      }
+    },
+    
+    "extra": {
+      "laravel": {
+        "providers": [
+          "GrassFeria\\LaravelSerpApi\\Providers\\AppServiceProvider"
+        ]
+        
+      }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+      "grass-feria/starterkid": "dev-main"
+  }
+  }
