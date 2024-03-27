@@ -27,8 +27,6 @@
       }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-      "grass-feria/starterkid": "dev-main"
-  }
+    "prefer-stable": true
+   
   }
