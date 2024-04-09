@@ -64,19 +64,26 @@ class EventFilters
     public function getFormatForMonthColumn($event)
     {
         $month = substr($event['date']['start_date'], 0, strpos($event['date']['start_date'], ' '));
-        $month1 = str_replace(['Januar', 'Jan'], 'JAN', $month);
-        $month2 = str_replace(['Februar', 'Feb'], 'FEB', $month1);
-        $month3 = str_replace(['März', 'March', 'Mär', 'Mar'], config('app.locale') == 'de' ? 'MÄR' : 'MAR', $month2);
-        $month4 = str_replace(['April', 'Apr'], 'APR', $month3);
-        $month5 = str_replace(['Mai', 'May'], config('app.locale') == 'de' ? 'MAI' : 'MAY', $month4);
-        $month6 = str_replace(['Juni', 'Jun'], 'JUN', $month5);
-        $month7 = str_replace(['Juli', 'Jul'], 'JUL', $month6);
-        $month8 = str_replace(['August', 'Aug'], 'AUG', $month7);
-        $month9 = str_replace(['September', 'Sep'], 'SEP', $month8);
-        $month10 = str_replace(['Oktober', 'Oct'], 'OCT', $month9);
-        $month11 = str_replace(['November', 'Nov'], 'NOV', $month10);
-        $month12 = str_replace(['Dezember', 'Dec', 'Dez'], config('app.locale') == 'de' ? 'DEZ' : 'DEC', $month11);
+        $this->convertFormatForMonthColumn($event);
 
-        return $month12;
+        return $month;
+    }
+
+    public function convertFormatForMonthColumn(string $value)
+    {
+        $value = str_replace(['Januar', 'Jan'], 'JAN', $value);
+        $value = str_replace(['Februar', 'Feb'], 'FEB', $value);
+        $value = str_replace(['März', 'March', 'Mär', 'Mar'], config('app.locale') == 'de' ? 'MÄR' : 'MAR', $value);
+        $value = str_replace(['April', 'Apr'], 'APR', $value);
+        $value = str_replace(['Mai', 'May'], config('app.locale') == 'de' ? 'MAI' : 'MAY', $value);
+        $value = str_replace(['Juni', 'Jun'], 'JUN', $value);
+        $value = str_replace(['Juli', 'Jul'], 'JUL', $value);
+        $value = str_replace(['August', 'Aug'], 'AUG', $value);
+        $value = str_replace(['September', 'Sep'], 'SEP', $value);
+        $value = str_replace(['Oktober', 'Oct'], 'OCT', $value);
+        $value = str_replace(['November', 'Nov'], 'NOV', $value);
+        $value = str_replace(['Dezember', 'Dec', 'Dez'], config('app.locale') == 'de' ? 'DEZ' : 'DEC', $value);
+
+        return $value;
     }
 }
