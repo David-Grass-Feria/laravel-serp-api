@@ -7,19 +7,19 @@ use Illuminate\Support\Facades\Http;
 class EventFilters
 
 {
-    
+
     public $events;
-    
-    
+
+
     public function __construct(array $events)
     {
         $this->events = $events;
     }
-    
-    
+
+
     public function removeDublicateEntrys()
     {
-    
+
         $addressCheck = [];
         foreach ($this->events as $key => $event) {
             if (!str_contains(strtolower($event['address'][1]), 'saalfeld') || in_array($event['address'][0], $addressCheck)) {
@@ -53,5 +53,30 @@ class EventFilters
         });
 
         return $this->events;
+    }
+
+    public function getFormatForDayNumberColumn()
+    {
+        $dayNumber = trim(str_replace(['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez', 'Mar', 'May', 'Dec'], '', $this->events['date']['start_date']));
+        return $dayNumber;
+    }
+
+    public function getFormatForMonthColumn()
+    {
+        $month = substr($this->events['date']['start_date'], 0, strpos($this->events['date']['start_date'], ' '));
+        $month = str_replace(['Januar', 'Jan'], 'JAN', $month);
+        $month = str_replace(['Februar', 'Feb'], 'FEB', $month);
+        $month = str_replace(['März', 'March', 'Mär', 'Mar'], config('app.locale') == 'de' ? 'MÄR' : 'MAR', $month);
+        $month = str_replace(['April', 'Apr'], 'APR', $month);
+        $month = str_replace(['Mai', 'May'], config('app.locale') == 'de' ? 'MAI' : 'MAY', $month);
+        $month = str_replace(['Juni', 'Jun'], 'JUN', $month);
+        $month = str_replace(['Juli', 'Jul'], 'JUL', $month);
+        $month = str_replace(['August', 'Aug'], 'AUG', $month);
+        $month = str_replace(['September', 'Sep'], 'SEP', $month);
+        $month = str_replace(['Oktober', 'Oct'], 'OCT', $month);
+        $month = str_replace(['November', 'Nov'], 'NOV', $month);
+        $month = str_replace(['Dezember', 'Dec', 'Dez'], config('app.locale') == 'de' ? 'DEZ' : 'DEC', $month);
+
+        return $month;
     }
 }
