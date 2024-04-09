@@ -64,19 +64,19 @@ class EventFilters
     public function getFormatForMonthColumn($event)
     {
         $month = substr($event['date']['start_date'], 0, strpos($event['date']['start_date'], ' '));
-        $month = str_replace(['Januar', 'Jan'], 'JAN', $month);
-        $month = str_replace(['Februar', 'Feb'], 'FEB', $month);
-        $month = str_replace(['März', 'March', 'Mär', 'Mar'], config('app.locale') == 'de' ? 'MÄR' : 'MAR', $month);
-        $month = str_replace(['April', 'Apr'], 'APR', $month);
-        $month = str_replace(['Mai', 'May'], config('app.locale') == 'de' ? 'MAI' : 'MAY', $month);
-        $month = str_replace(['Juni', 'Jun'], 'JUN', $month);
-        $month = str_replace(['Juli', 'Jul'], 'JUL', $month);
-        $month = str_replace(['August', 'Aug'], 'AUG', $month);
-        $month = str_replace(['September', 'Sep'], 'SEP', $month);
-        $month = str_replace(['Oktober', 'Oct'], 'OCT', $month);
-        $month = str_replace(['November', 'Nov'], 'NOV', $month);
-        $month = str_replace(['Dezember', 'Dec', 'Dez'], config('app.locale') == 'de' ? 'DEZ' : 'DEC', $month);
+        $month1 = str_replace(['Januar', 'Jan'], 'JAN', $month);
+        $month2 = str_replace(['Februar', 'Feb'], 'FEB', $month1);
+        $month3 = str_replace(['März', 'March', 'Mär', 'Mar'], config('app.locale') == 'de' ? 'MÄR' : 'MAR', $month2);
+        $month4 = str_replace(['April', 'Apr'], 'APR', $month3);
+        $month5 = str_replace(['Mai', 'May'], config('app.locale') == 'de' ? 'MAI' : 'MAY', $month4);
+        $month6 = str_replace(['Juni', 'Jun'], 'JUN', $month5);
+        $month7 = str_replace(['Juli', 'Jul'], 'JUL', $month6);
+        $month8 = str_replace(['August', 'Aug'], 'AUG', $month7);
+        $month9 = str_replace(['September', 'Sep'], 'SEP', $month8);
+        $month10 = str_replace(['Oktober', 'Oct'], 'OCT', $month9);
+        $month11 = str_replace(['November', 'Nov'], 'NOV', $month10);
+        $month12 = str_replace(['Dezember', 'Dec', 'Dez'], config('app.locale') == 'de' ? 'DEZ' : 'DEC', $month11);
 
-        return $month;
+        return $month12;
     }
 }
