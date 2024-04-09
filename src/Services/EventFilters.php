@@ -55,15 +55,15 @@ class EventFilters
         return $this->events;
     }
 
-    public function getFormatForDayNumberColumn()
+    public function getFormatForDayNumberColumn($event)
     {
-        $dayNumber = trim(str_replace(['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez', 'Mar', 'May', 'Dec'], '', $this->events['date']['start_date']));
+        $dayNumber = trim(str_replace(['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez', 'Mar', 'May', 'Dec'], '', $event['date']['start_date']));
         return $dayNumber;
     }
 
-    public function getFormatForMonthColumn()
+    public function getFormatForMonthColumn($event)
     {
-        $month = substr($this->events['date']['start_date'], 0, strpos($this->events['date']['start_date'], ' '));
+        $month = substr($event['date']['start_date'], 0, strpos($event['date']['start_date'], ' '));
         $month = str_replace(['Januar', 'Jan'], 'JAN', $month);
         $month = str_replace(['Februar', 'Feb'], 'FEB', $month);
         $month = str_replace(['März', 'March', 'Mär', 'Mar'], config('app.locale') == 'de' ? 'MÄR' : 'MAR', $month);
