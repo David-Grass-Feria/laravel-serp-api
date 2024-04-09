@@ -64,9 +64,9 @@ class EventFilters
     public function getFormatForMonthColumn($event)
     {
         $month = substr($event['date']['start_date'], 0, strpos($event['date']['start_date'], ' '));
-        $this->convertFormatForMonthColumn($month);
+        $convert = $this->convertFormatForMonthColumn($month);
 
-        return $month;
+        return $convert;
     }
 
     public function convertFormatForMonthColumn(string $value)
