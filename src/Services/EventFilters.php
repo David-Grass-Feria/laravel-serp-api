@@ -11,7 +11,7 @@ class EventFilters
     public $events;
 
 
-    public function __construct(array $events)
+    public function __construct(array $events = null)
     {
         $this->events = $events;
     }
