@@ -49,6 +49,33 @@ class GoogleEvents
           return $addMonthToEventsArray;
     }
 
+    public function getEventsFromGoogleNextMonth()
+    {
+        $parameters = array_merge([
+            'engine' => 'google_events',
+            'api_key' => config('laravel-serp-api.serp_api_key'),
+            'gl' => $this->gl,
+            'q' => 'events in '.$this->city,
+            'htichips' => 'date:next_month',
+        ]);
+
+        $response = Http::get('https://serpapi.com/search.json', $parameters);
+
+        $data = $response->json();
+       
+        $events = $data['events_results'];
+        
+        // remove duplicates and remove other cities
+        $eventsWithoutDuplicates = $this->removeDuplicates($events);
+        // sort events by date
+        $sortedEventsByDate = $this->sortEventsByDate($eventsWithoutDuplicates);
+         // add day column to the array
+         $addDayColumnToEventsArray = $this->createDayNumberColumnInArray($sortedEventsByDate);
+          // add month column to the array
+          $addMonthToEventsArray = $this->createMonthColumnInArray($addDayColumnToEventsArray);
+          return $addMonthToEventsArray;
+    }
+
     public function removeDuplicates($events)
     {
         $addressCheck = [];
