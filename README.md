@@ -6,3 +6,5 @@ $events = (new \GrassFeria\LaravelSerpApi\Services\GoogleEvents('de','saalfeld')
 $events = (new \GrassFeria\LaravelSerpApi\Services\GoogleEvents('de','saalfeld'))->getEventsFromGoogleNextMonth();
 
 ```
+# Google News
+$news = (new \GrassFeria\LaravelSerpApi\Services\GoogleNews('de','saalfeld news'))->getGoogleNews();
